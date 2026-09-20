@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local tooling
+.idea/
+.vscode/
+.DS_Store
+
+# CatBoost runtime files
+catboost_info/
+
+# Assessment source data is supplied separately and is not published
+data/*.csv
+!data/README.md
+
+# Regenerable exploratory outputs
+analysis_outputs/
