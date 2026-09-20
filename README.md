@@ -65,30 +65,47 @@ The raw assessment datasets are intentionally excluded from the public repositor
 
 Python 3.11 or newer is recommended.
 
-```bash
-python -m venv .venv
-```
+### Windows PowerShell
 
-Activate the environment:
+Check that the Python launcher is installed:
 
 ```powershell
-# Windows PowerShell
-.venv\Scripts\Activate.ps1
+py --version
 ```
 
+Create a virtual environment and install the dependencies. Activation is optional; using the environment's Python executable directly avoids PowerShell script execution-policy issues.
+
+```powershell
+py -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+If you prefer to activate the environment, run:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+If PowerShell blocks activation, either continue using the direct `.venv` Python commands above or allow scripts only for the current terminal session, then activate:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\.venv\Scripts\Activate.ps1
+```
+
+### macOS/Linux
+
 ```bash
-# macOS/Linux
+python3 -m venv .venv
 source .venv/bin/activate
-```
-
-Install dependencies:
-
-```bash
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
 Place the four supplied CSVs in `data/`, then run commands from the repository root.
+
+On Windows, run the project commands below with `python` after activation. To run without activation, invoke the project virtual environment Python executable directly as shown above. On macOS/Linux, run them after activating `.venv`.
 
 ## Reproduce the project
 
